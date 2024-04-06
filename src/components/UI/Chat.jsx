@@ -29,7 +29,7 @@ export const Chat = () => {
 }
 
 const MAX_MESSAGES = 6
-const AUTOHIDE_TIMEOUT = 5000
+const AUTOHIDE_TIMEOUT = 2000
 
 const ChatWindow = () => {
   const [input, setInput] = useState('')
@@ -41,6 +41,8 @@ const ChatWindow = () => {
   const autohideRef = useRef()
   const [messages, setMessages] = useMultiplayerState('messages', [])
   const player = myPlayer()
+
+  // const [distance, setDistance] = useState(0)
 
   const allPlayers = usePlayersState('withVoiceChat')
   useEffect(() => {
@@ -62,9 +64,9 @@ const ChatWindow = () => {
       if (p.id !== p.myId) {
         const otherPlayerLocation = p.getState().position
         const distance = getDistance(myPlayerLocation, otherPlayerLocation)
-        if (distance < smallestDistance) {
-          smallestDistance = distance
+        if (distance < 3) {
           nearestPlayerName = p.getState().player_name
+          console.log(distance)
         }
       }
     })
@@ -75,6 +77,7 @@ const ChatWindow = () => {
 
   console.log(myPlayeri)
   console.log(nearestPlayer)
+
   useEffect(() => {
     // hides joystick when chat opens
     const joystickContainer = window.document.querySelector('#joystick')
@@ -120,18 +123,18 @@ const ChatWindow = () => {
     <>
       {!showChat && (
         <div
-          className='relative z-10 px-0 py-0 rounded-3xl w-full max-w-[400px] h-[50vh] flex text-lg justify-end gap-4 notosanskr flex-col max-md:text-xs overflow-hidden max-md:mb-3 max-md:ml-3 max-md:min-w-[50vw]'
+          className='relative m-5 z-10 px-0 py-0 rounded-xl w-full max-w-[400px] h-[50vh] flex text-lg justify-end gap-4 notosanskr flex-col max-md:text-xs overflow-hidden max-md:mb-3 max-md:ml-3 max-md:min-w-[50vw]'
           onMouseEnter={showMessages}
           onMouseLeave={() => !inputFocused && scheduleAutohideMessages()}
         >
           <div
-            className={`absolute w-full h-full flex justify-end  transition-all duration-500 ${autohide && 'opacity-0'}`}
+            className={`absolute  w-full h-full flex justify-end  transition-all duration-500 ${autohide && 'opacity-0'}`}
             style={{
               zIndex: -1,
-              background: isTouchableScreen() ? '' : 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75))',
+              background: isTouchableScreen() ? '' : 'rgba(255, 255, 255, 0.8)',
             }}
           >
-            <div style={{ paddingBottom: 50 }} className='w-full flex gap-2 font-bold flex-col-reverse rounded-b-lg max-md:-ml-4'>
+            <div style={{ paddingBottom: 50 }} className='w-full flex gap-2 p-2 font-bold flex-col-reverse rounded-b-lg max-md:-ml-4'>
               <ListMessages
                 myPlayer={myPlayeri}
                 nearestPlayer={nearestPlayer}
@@ -142,7 +145,7 @@ const ChatWindow = () => {
             </div>
           </div>
 
-          <div className='rounded-3xl m-0 h-15 flex  overflow-hidden py-2 px-4 bg-white max-md:hidden'>
+          <div className=' m-0 h-15 flex  overflow-hidden py-2 px-4 bg-white max-md:hidden'>
             <Input onChange={setInput} onSubmit={onSubmit} value={input} onFocus={onInputFocus} onBlur={onInputBlur} />
           </div>
           <a
@@ -157,21 +160,21 @@ const ChatWindow = () => {
       <div
         className='w-[100vw] h-[50vh] absolute bottom-0 left-0 flex flex-col justify-end transition-all overflow-hidden'
         style={{
-          background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1))',
+          // background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1))',
           zIndex: 200,
           bottom: showChat ? 0 : '-100vh',
         }}
       >
         <a
           onClick={() => setShowChat(false)}
-          className='rounded-full bg-white h-10 w-10 ml-1 flex justify-center absolute top-0 right-0'
+          className=' bg-white h-10 w-10 ml-1 flex justify-center absolute top-0 right-0'
           style={{ backgroundColor: '#fff' }}
         >
           <img src={closeIcon} className='w-6' />
         </a>
         <div
           // style={{ background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))' }}
-          className='w-full flex gap-2 font-bold flex-col-reverse h-auto rounded-b-lg pb-5 min-h-[75%]'
+          className='w-full flex gap-2 font-bold flex-col-reverse h-auto  pb-5 min-h-[75%]'
         >
           <ListMessages
             myPlayer={myPlayeri}
@@ -179,7 +182,7 @@ const ChatWindow = () => {
             messages={[...new Map(messages.map(v => [v.timestamp, v])).values()]}
           />
         </div>
-        <div className='rounded-3xl  h-15 flex gap-4 overflow-hidden py-2 px-6 bg-white border-black border-solid border-2 m-2'>
+        <div className=' h-15 flex gap-4 overflow-hidden py-2 px-6 bg-white border-black border-solid border-2 m-2'>
           <Input onChange={setInput} onSubmit={onSubmit} value={input} />
         </div>
       </div>
@@ -187,12 +190,12 @@ const ChatWindow = () => {
   )
 }
 
-const ListMessages = ({ messages, myPlayer, nearestPlayer }) => (
+const ListMessages = ({ messages }) => (
   <>
     {messages
       .sort((a, b) => b.timestamp - a.timestamp)
       .map(m => (
-        <div key={`message_${m.timestamp}`} className='bg5 w-full px-6 rounded-xl py-2 h-auto max-md:py-0 max-md:pl-2'>
+        <div key={`message_${m.timestamp}`} className='bg5 w-full px-6 rounded-l py-2 h-auto max-md:py-0 max-md:pl-2'>
           <p style={{ color: m.color, wordWrap: 'break-word', lineHeight: '1.5rem', filter: 'brightness(75%) saturate(100%)' }}>
             <span className='text1'>{m.author}</span>
             {''}:<span style={{ filter: 'brightness(50%) saturate(300%)' }}>{m.message}</span>
@@ -207,14 +210,14 @@ const Input = ({ onSubmit, onChange, value, onFocus, onBlur }) => (
   <>
     <input
       maxLength={300}
-      placeholder='write something'
-      className='flex-1 min-w-0 rounded-xl bg-transparent focus:outline-none focus:border-none input-box text5 font-bold'
+      placeholder='send messages'
+      className='flex-1 min-w-0  bg-transparent focus:outline-none focus:border-none input-box text5 font-bold'
       type='text'
       onChange={e => {
         onChange(e.target.value)
       }}
       onKeyDown={e => {
-        e.stopPropagation() // avoids moving character while typing
+        e.stopPropagation()
         e.code === 'Enter' && onSubmit()
         e.code === 'Escape' && e.target.blur()
       }}

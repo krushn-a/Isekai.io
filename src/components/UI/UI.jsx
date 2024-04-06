@@ -50,7 +50,7 @@ export const UI = () => {
         <div className='absolute top-0 right-0 mt-1 mr-1 flex justify-end items-center'>
           {/* AVATAR */}
           <button
-            className='w-10 h-10 p-4 rounded-full bg-slate-500 text-white  drop-shadow-md cursor-pointer hover:bg-slate-800 transition-colors'
+            className='w-16 h-16 p-4 m-2 rounded-xl bg-slate-500 text-white  drop-shadow-md cursor-pointer hover:bg-slate-800 transition-colors'
             onClick={() => {
               setAvatarMode(true)
               myPlayer().setState('avatarMode', true)

@@ -69,11 +69,11 @@ export default function CharacterModel({
 const PlayerName = ({ name, player }) => {
   const [occluded, setOccluded] = useState(false)
   return (
-    <Html style={{ transform: 'translate(-50%, 0)' }} position={[0, 2.25, 0]} occlude onOcclude={setOccluded} distanceFactor={5}>
+    <Html style={{ transform: 'translate(-50%, 0)' }} position={[0, 2, 0]} occlude onOcclude={setOccluded} distanceFactor={5}>
       <div
         className='select-none text-center flex justify-center'
         style={{
-          fontFamily: "''",
+          fontFamily: "Inter",
           opacity: occluded ? 0.5 : 1,
           WebkitTextStroke: '0.01rem #fff',
         }}
