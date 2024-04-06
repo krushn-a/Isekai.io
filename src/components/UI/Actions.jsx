@@ -1,8 +1,6 @@
 import waveIcon from '../../assets/waveIcon.svg'
-import insWave from '../../assets/insWave.svg'
 import danceIcon from '../../assets/danceIcon.svg'
-import insDance from '../../assets/insDance.svg'
-import insDance2 from '../../assets/insDance2.svg'
+import danceIcon2 from '../../assets/danceIcon2.png'
 import { useGame } from 'ecctrl'
 
 export const Actions = () => {
@@ -21,17 +19,17 @@ export const Actions = () => {
         </a>
 
       </div>
-      <div className='absolute bottom-0 right-2 flex flex-col max-md:hidden'>
+      <div className='absolute bottom-2 right-2 flex flex-col max-md:hidden'>
         <a onClick={action1} className='py-1'>
-          <img src={insWave} className='h-11 mr-3' />
+          <img src={waveIcon} className='h-11 mr-3' />
         </a>
         <a onClick={action2} className='py-1'>
-          <img src={insDance} className='h-11 mr-3' />
+          <img src={danceIcon} className='h-11 mr-3' />
         </a>
         <a onClick={action3} className='py-1'>
-          <img src={insDance2} className='h-11' />
+          <img src={danceIcon2} className='h-11 p-1.5 bg-white rounded-full' />
         </a>
       </div>
-    </>
+  </>
   )
 }
