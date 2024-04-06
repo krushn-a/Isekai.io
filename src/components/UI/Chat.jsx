@@ -42,14 +42,12 @@ const ChatWindow = () => {
   const [messages, setMessages] = useMultiplayerState('messages', [])
   const player = myPlayer()
 
-  // const [distance, setDistance] = useState(0)
 
-  const allPlayers = usePlayersState('withVoiceChat')
+  const allPlayers = usePlayersState('players')
   useEffect(() => {
     let myPlayerLocation
     let nearestPlayerName
     let myPlayerName
-    let smallestDistance = Infinity
 
     // First loop to find myPlayerLocation
     allPlayers.forEach(({ player: p }) => {
@@ -119,7 +117,7 @@ const ChatWindow = () => {
     setInput('')
     setTimeout(() => {
       setMessages(messages => messages.filter(m => m !== newMessage))
-    }, 10000)
+    }, 12000)
   }
   return (
     <>

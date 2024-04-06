@@ -1,5 +1,12 @@
 import { usePlayersState } from 'playroomkit'
 
+const randomRange = (min, max) => Math.random() * (max - min) + min
+
+const generateRandomGuestName = () => {
+  const names = ['Guest', 'Anonymous', 'Someone']
+  return names[Math.round((Math.random() * 10) % (names.length - 1))] + '_' + String(Math.trunc(randomRange(10, 99)))
+}
+
 export const PlayerList = () => {
   const allPlayers = usePlayersState('players')
 
@@ -21,7 +28,7 @@ export const PlayerList = () => {
                 fontFamily: "''",
               }}
             >
-              {playerName || 'Unknown'}
+              {playerName || generateRandomGuestName()}
             </span>
           </div>
         )

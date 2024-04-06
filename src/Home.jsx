@@ -7,15 +7,15 @@ function Home({ enterWorld }) {
 
   return (
     <div className='flex flex-row w-full'>
-      <div className='w-6/12 h-fit'>
+      <div className='hidden lg:w-6/12 lg:flex'>
         {' '}
-        <img src='../src/assets/group.png' className='h-full' />
+        <img src='../src/assets/group.png' className='h-screen' />
       </div>
-      <div className='flex flex-col  w-6/12 items-center justify-center h-screen bg-gray-100 '>
-        <img src='../src/assets/logo.svg' className='size-72 absolute top-2 ' />
+      <div className='md:top-0 bottom-0 left-0 right-0 mx-auto lg:flex flex-col  w-6/12 items-center justify-center h-screen'>
+        <img src='../src/assets/logo.svg' className='size-72 absolute md:top-12 lg:top-2 pb-20 ' />
         {screen === 'LOBBY' && (
-          <div className='flex h-full mx-4 flex-col items-center justify-center '>
-            <p className='font-mono mt-1 px-32 ' style={{ fontFamily: 'Inter Tight' }}>
+          <div className='flex h-full  flex-col items-center justify-center '>
+            <p className='hidden lg:flex font-mono mt-1 px-32 ' style={{ fontFamily: 'Inter Tight' }}>
               Welcome to Isekai.io, a virtual world inspired by the popular "Isekai" genre. Here, you can escape the harsh realities of your
               world and build a new life anonymously. Our project aims to provide a safe and engaging space for users to connect, build
               communities, and forge meaningful relationships without revealing their real-world identities. Enjoy our features like
@@ -25,7 +25,7 @@ function Home({ enterWorld }) {
             <button
               className='text-gray-900  bg-gradient-to-r from-cyan-500 to-blue-500 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center m-4'
               onClick={() => {
-                setHashValue('r', 'R' + 'ABCD')
+                setHashValue('r', 'R' + 'ROOM')
                 setScreen('NAME')
                 }}
               >
@@ -35,7 +35,7 @@ function Home({ enterWorld }) {
             )}
             {screen === 'NAME' && (
               <div className='flex flex-col items-center'>
-              <p className='px-32' >
+              <p className='px-32 hidden lg:flex' >
                 Welcome to Isekai.io! In this virtual world, you can create a new life and explore endless possibilities. Please follow the instructions below to get started:
                 <br />
                 <br />
@@ -45,7 +45,7 @@ function Home({ enterWorld }) {
                 <br />
                 3. Click the Next button to continue.
               </p>
-              <div className='flex mt-20 items-center'>
+              <div className='flex mt-80 lg:mt-20 items-center'>
                 <div
                 className='border border-black border-1 rounded-xl h-12 flex  overflow-hidden py-2 px-6 bg-white '
                 style={{
