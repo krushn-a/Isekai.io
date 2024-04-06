@@ -4,6 +4,7 @@ import { myPlayer, getRoomCode } from 'playroomkit'
 import { getRandomExpression } from '../../utils/helpers'
 import { PlayerList } from './PlayersList'
 import { Actions } from './Actions'
+import { Chat } from './Chat'
 
 export const UI = () => {
   const [avatarMode, setAvatarMode] = useState(false)
@@ -61,7 +62,10 @@ export const UI = () => {
             }}
           />
         </div>
-        
+        <div className='flex items-end justify-center space-x-0  max-md:mb-40 max-md:flex-col md:w-2/4 max-md:items-start'>
+          {/* CHAT */}
+          {!avatarMode && <Chat />}
+        </div>
         <Actions />
       </div>
     </>
