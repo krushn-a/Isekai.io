@@ -21,7 +21,7 @@ export const PlayerList = () => {
                 fontFamily: "''",
               }}
             >
-              {playerName}
+              {playerName || 'Unknown'}
             </span>
           </div>
         )
