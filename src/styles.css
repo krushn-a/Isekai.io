@@ -1,6 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/nerillkid-trial');
 @import url('https://fonts.cdnfonts.com/css/kenarose');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,9 +12,9 @@
 
 body {
   margin: 0;
-  font-family: 'Kenarose', sans-serif;
+  font-family: "Inter Tight", sans-serif;
   letter-spacing: 0.125rem;
-  font-weight: bold;
+ 
 }
 input {
   letter-spacing: 0.125rem;

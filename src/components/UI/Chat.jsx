@@ -103,22 +103,24 @@ const ChatWindow = () => {
   }
 
   const onSubmit = () => {
-    // discards empty messages
+
     if (input.trim().length === 0) return
 
-    // fallback to hash url since sometimes Playroom profile name is empty
     const author = player.getState().player_name
 
-    // pushes new message into shared state
-    setMessages([
-      { author, message: input, color: player.getProfile().color.hexString, timestamp: Date.now() },
-      ...messages.slice(0, MAX_MESSAGES),
-    ])
+    const newMessage = {
+      author,
+      message: input,
+      color: player.getProfile().color.hexString,
+      timestamp: Date.now(),
+    }
+    setMessages([newMessage, ...messages.slice(0, MAX_MESSAGES)])
 
-    // clears input
     setInput('')
+    setTimeout(() => {
+      setMessages(messages => messages.filter(m => m !== newMessage))
+    }, 10000)
   }
-
   return (
     <>
       {!showChat && (

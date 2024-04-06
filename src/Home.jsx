@@ -3,43 +3,77 @@ import { getHashValue, getStoreValue, setHashValue, setStoreValue } from './util
 
 function Home({ enterWorld }) {
   const [screen, setScreen] = useState(getHashValue('r') ? 'NAME' : 'LOBBY')
-  const [playerName, setPlayerName] = useState(getStoreValue('player_name') )
+  const [playerName, setPlayerName] = useState(getStoreValue('player_name'))
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen bg-gray-100 ' >
-      <img src='../src/assets/logo.svg' className='size-72'/>
-      {screen === 'LOBBY' && (
-        <div className='flex'>
-          <button
-            className=' text-white text-lg h-16 w-52 rounded-lg px-3 py-2 m-1 bg-gradient-to-r from-purple-500 to-pink-500'
-            onClick={() => {
-              setHashValue('r', 'R' + 'HCVF')
-              setScreen('NAME')
-            }}
-          >
-            Enter the world 
-          </button>
-          
-        </div>
-      )}
-      {screen === 'NAME' && (
-        <div className='flex mt-20 items-center'>
-          <div className='border border-black border-1 rounded-3xl h-12 flex gap-4 overflow-hidden py-2 px-6 bg-white '>
-            <Input onChange={setPlayerName} onSubmit={() => {}} value={playerName} />
+    <div className='flex flex-row w-full'>
+      <div className='w-6/12 h-fit'>
+        {' '}
+        <img src='../src/assets/group.png' className='h-full' />
+      </div>
+      <div className='flex flex-col  w-6/12 items-center justify-center h-screen bg-gray-100 '>
+        <img src='../src/assets/logo.svg' className='size-72 absolute top-2 ' />
+        {screen === 'LOBBY' && (
+          <div className='flex h-full mx-4 flex-col items-center justify-center '>
+            <p className='font-mono mt-1 px-32 ' style={{ fontFamily: 'Inter Tight' }}>
+              Welcome to Isekai.io, a virtual world inspired by the popular "Isekai" genre. Here, you can escape the harsh realities of your
+              world and build a new life anonymously. Our project aims to provide a safe and engaging space for users to connect, build
+              communities, and forge meaningful relationships without revealing their real-world identities. Enjoy our features like
+              anonymity, community building, and a virtual chat room where you can interact with others. Get ready to dive into the virtual
+              world!
+            </p>
+            <button
+              className='text-gray-900  bg-gradient-to-r from-cyan-500 to-blue-500 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center m-4'
+              onClick={() => {
+                setHashValue('r', 'R' + 'ABCD')
+                setScreen('NAME')
+                }}
+              >
+                Enter the world
+              </button>
+              </div>
+            )}
+            {screen === 'NAME' && (
+              <div className='flex flex-col items-center'>
+              <p className='px-32' >
+                Welcome to Isekai.io! In this virtual world, you can create a new life and explore endless possibilities. Please follow the instructions below to get started:
+                <br />
+                <br />
+                1. Choose a unique name that represents your virtual identity.
+                <br />
+                2. Enter your chosen name in the input box below.
+                <br />
+                3. Click the Next button to continue.
+              </p>
+              <div className='flex mt-20 items-center'>
+                <div
+                className='border border-black border-1 rounded-xl h-12 flex  overflow-hidden py-2 px-6 bg-white '
+                style={{
+                  borderRight: 'none',
+                  borderRadius: '0.5rem 0 0 0.5rem',
+                }}
+                >
+                <Input onChange={setPlayerName} onSubmit={() => {}} value={playerName} />
+                </div>
+                <button
+                className='text-white rounded-xl px-6 py-2  h-12  bg-gradient-to-r from-cyan-500 to-blue-500'
+                style={{
+                  borderLeft: 'none',
+                  borderRadius: '0 0.5rem 0.5rem 0',
+                }}
+                onClick={() => {
+                  setStoreValue('player_name', playerName)
+                  enterWorld()
+                }}
+              >
+                Next
+              </button>
+            </div>
           </div>
-          <button
-            className='text-white rounded-lg px-3 py-2 m-3  bg-gradient-to-r from-cyan-500 to-blue-500'
-            onClick={() => {
-              setStoreValue('player_name', playerName)
-              enterWorld()
-            }}
-          >
-            Next
-          </button>
+        )}
+        <div className='absolute bottom-5 text-xs gap-2 flex items-center'>
+          <p className='text-xs mt-1'>Get ready to dive into virtual world</p>
         </div>
-      )}
-      <div className='absolute bottom-5 text-xs gap-2 flex items-center'>
-        <p className='text-xs mt-1'>Get ready to dive into virtual world</p>
       </div>
     </div>
   )
