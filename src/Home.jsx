@@ -6,12 +6,12 @@ function Home({ enterWorld }) {
   const [playerName, setPlayerName] = useState(getStoreValue('player_name') )
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen bg-gray-100'>
+    <div className='flex flex-col items-center justify-center h-screen bg-gray-100 ' >
       <img src='../src/assets/logo.svg' className='size-72'/>
       {screen === 'LOBBY' && (
         <div className='flex'>
           <button
-            className=' text-white  rounded-lg px-3 py-2 m-1 bg-gradient-to-r from-purple-500 to-pink-500'
+            className=' text-white text-lg h-16 w-52 rounded-lg px-3 py-2 m-1 bg-gradient-to-r from-purple-500 to-pink-500'
             onClick={() => {
               setHashValue('r', 'R' + 'HCVF')
               setScreen('NAME')
@@ -24,7 +24,7 @@ function Home({ enterWorld }) {
       )}
       {screen === 'NAME' && (
         <div className='flex mt-20 items-center'>
-          <div className='rounded-3xl h-12 flex gap-4 overflow-hidden py-2 px-6 bg-white '>
+          <div className='border border-black border-1 rounded-3xl h-12 flex gap-4 overflow-hidden py-2 px-6 bg-white '>
             <Input onChange={setPlayerName} onSubmit={() => {}} value={playerName} />
           </div>
           <button
