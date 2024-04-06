@@ -62,8 +62,7 @@ const ChatWindow = () => {
       if (p.id !== p.myId) {
         const otherPlayerLocation = p.getState().position
         const distance = getDistance(myPlayerLocation, otherPlayerLocation)
-        if (distance < smallestDistance) {
-          smallestDistance = distance
+        if (distance < 3) {
           nearestPlayerName = p.getState().player_name
         }
       }
