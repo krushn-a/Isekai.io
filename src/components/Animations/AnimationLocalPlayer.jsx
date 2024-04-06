@@ -37,10 +37,20 @@ export const Animator = ({ player, actions }) => {
   useEffect(() => {
     const action = actions[curAnimation ? curAnimation : animationSet.idle]
 
-    if (curAnimation === animationSet.jump || curAnimation === animationSet.jumpLand || curAnimation === animationSet.action1) {
+    if (
+      curAnimation === animationSet.jump || 
+      curAnimation === animationSet.jumpLand || 
+      curAnimation === animationSet.action1 || 
+      curAnimation === animationSet.action2 ||
+      curAnimation === animationSet.action3
+      )
+      
+      {
       action && action.reset().fadeIn(0.23).setLoop(THREE.LoopOnce, undefined).play()
       action && (action.clampWhenFinished = true)
-    } else {
+      }
+    
+      else {
       action && action.reset().fadeIn(0.23).play()
     }
 

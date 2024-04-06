@@ -33,7 +33,9 @@ const Animator = ({ player, actions }) => {
       curAnimation === animationSet.idle ||
       curAnimation === animationSet.jump ||
       curAnimation === animationSet.jumpLand ||
-      curAnimation === animationSet.action1 
+      curAnimation === animationSet.action1 ||
+      curAnimation === animationSet.action2 ||
+      curAnimation === animationSet.action3
     ) {
       action && action.reset().fadeIn(0.23).setLoop(THREE.LoopOnce, undefined).play()
       action && (action.clampWhenFinished = true)

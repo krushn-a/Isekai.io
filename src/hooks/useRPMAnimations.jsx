@@ -8,6 +8,9 @@ export const useRPMAnimations = targetRef => {
   const { animations: jumpIdleAnimation } = useGLTF('/animations/M_Jump_Idle.glb')
   const { animations: jumpAnimation } = useGLTF('/animations/M_Falling_Idle_002.glb')
   const { animations: jogAnimation } = useGLTF('/animations/M_Jog_001.glb')
+  const { animations: danceAnimation } = useGLTF('/animations/M_Dances_001.glb')
+  const { animations: danceAltAnimation } = useGLTF('/animations/M_Dances_005.glb')
+
 
   const { actions } = useAnimations(
     [
@@ -18,6 +21,8 @@ export const useRPMAnimations = targetRef => {
       jumpIdleAnimation[0].clone(),
       jogAnimation[0].clone(),
       jumpAnimation[0].clone(),
+      danceAnimation[0].clone(),
+      danceAltAnimation[0].clone(),
     ],
     targetRef
   )
@@ -32,6 +37,8 @@ useGLTF.preload('/animations/M_Standing_Expressions_001.glb')
 useGLTF.preload('/animations/M_Jump_Idle.glb')
 useGLTF.preload('/animations/M_Falling_Idle_002.glb')
 useGLTF.preload('/animations/M_Jog_001.glb')
+useGLTF.preload('/animations/M_Dances_001.glb')
+useGLTF.preload('/animations/M_Dances_005.glb')
 
 /**
  * Character animation set preset
@@ -45,4 +52,6 @@ export const animationSet = {
   jumpLand: 'CharacterArmature|Jump_Land',
   fall: 'CharacterArmature|Duck', 
   action1: 'M_Standing_Expressions_001',
+  action2: 'M_Dances_001',
+  action3: 'M_Dances_005',
 }
