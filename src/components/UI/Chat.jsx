@@ -62,7 +62,7 @@ const ChatWindow = () => {
       if (p.id !== p.myId) {
         const otherPlayerLocation = p.getState().position
         const distance = getDistance(myPlayerLocation, otherPlayerLocation)
-        if (distance < 3) {
+        if (distance < 4) {
           nearestPlayerName = p.getState().player_name
           console.log(distance)
         }
@@ -117,7 +117,7 @@ const ChatWindow = () => {
     setInput('')
     setTimeout(() => {
       setMessages(messages => messages.filter(m => m !== newMessage))
-    }, 12000)
+    }, 15000)
   }
   return (
     <>

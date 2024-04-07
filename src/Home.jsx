@@ -9,10 +9,17 @@ function Home({ enterWorld }) {
     <div className='flex flex-row w-full'>
       <div className='hidden lg:w-6/12 lg:flex'>
         {' '}
-        <img src='../src/assets/group.png' className='h-screen' />
+        <img
+          src='https://res-console.cloudinary.com/da9skd1ks/media_explorer_thumbnails/f594eb6396849b23b4c150a03b57392e/detailed'
+          className='h-screen'
+        />
       </div>
       <div className='md:top-0 bottom-0 left-0 right-0 mx-auto lg:flex flex-col  w-6/12 items-center justify-center h-screen'>
-        <img src='../src/assets/logo.svg' className='size-72 absolute md:top-12 lg:top-2 pb-20 ' />
+        <img
+          src='https://res-console.cloudinary.com/da9skd1ks/media_explorer_thumbnails/3b1e1e84cee60d4b854d225b3099a1fe/detailed'
+          alt='img'
+          className='size-72 h-40 absolute md:top-12 lg:top-2 pt-20 '
+        />
         {screen === 'LOBBY' && (
           <div className='flex h-full  flex-col items-center justify-center '>
             <p className='hidden lg:flex font-mono mt-1 px-32 ' style={{ fontFamily: 'Inter Tight' }}>
@@ -27,35 +34,36 @@ function Home({ enterWorld }) {
               onClick={() => {
                 setHashValue('r', 'R' + 'ROOM')
                 setScreen('NAME')
-                }}
-              >
-                Enter the world
-              </button>
-              </div>
-            )}
-            {screen === 'NAME' && (
-              <div className='flex flex-col items-center'>
-              <p className='px-32 hidden lg:flex' >
-                Welcome to Isekai.io! In this virtual world, you can create a new life and explore endless possibilities. Please follow the instructions below to get started:
-                <br />
-                <br />
-                1. Choose a unique name that represents your virtual identity.
-                <br />
-                2. Enter your chosen name in the input box below.
-                <br />
-                3. Click the Next button to continue.
-              </p>
-              <div className='flex mt-80 lg:mt-20 items-center'>
-                <div
+              }}
+            >
+              Enter the world
+            </button>
+          </div>
+        )}
+        {screen === 'NAME' && (
+          <div className='flex flex-col items-center'>
+            <p className='px-32 hidden lg:flex'>
+              Welcome to Isekai.io! In this virtual world, you can create a new life and explore endless possibilities. Please follow the
+              instructions below to get started:
+              <br />
+              <br />
+              1. Choose a unique name that represents your virtual identity.
+              <br />
+              2. Enter your chosen name in the input box below.
+              <br />
+              3. Click the Next button to continue.
+            </p>
+            <div className='flex mt-80 lg:mt-20 items-center'>
+              <div
                 className='border border-black border-1 rounded-xl h-12 flex  overflow-hidden py-2 px-6 bg-white '
                 style={{
                   borderRight: 'none',
                   borderRadius: '0.5rem 0 0 0.5rem',
                 }}
-                >
+              >
                 <Input onChange={setPlayerName} onSubmit={() => {}} value={playerName} />
-                </div>
-                <button
+              </div>
+              <button
                 className='text-white rounded-xl px-6 py-2  h-12  bg-gradient-to-r from-cyan-500 to-blue-500'
                 style={{
                   borderLeft: 'none',
