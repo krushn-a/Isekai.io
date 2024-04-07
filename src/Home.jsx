@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { getHashValue, getStoreValue, setHashValue, setStoreValue } from './utils/helpers'
 
+
 function Home({ enterWorld }) {
   const [screen, setScreen] = useState(getHashValue('r') ? 'NAME' : 'LOBBY')
   const [playerName, setPlayerName] = useState(getStoreValue('player_name'))
@@ -10,13 +11,13 @@ function Home({ enterWorld }) {
       <div className='hidden lg:w-6/12 lg:flex'>
         {' '}
         <img
-          src='https://res-console.cloudinary.com/da9skd1ks/media_explorer_thumbnails/f594eb6396849b23b4c150a03b57392e/detailed'
+          src='../public/images/group.png'
           className='h-screen'
         />
       </div>
       <div className='md:top-0 bottom-0 left-0 right-0 mx-auto lg:flex flex-col  w-6/12 items-center justify-center h-screen'>
         <img
-          src='https://res-console.cloudinary.com/da9skd1ks/media_explorer_thumbnails/3b1e1e84cee60d4b854d225b3099a1fe/detailed'
+          src='../public/images/logo.svg'
           alt='img'
           className='size-72 h-40 absolute md:top-12 lg:top-2 pt-20 '
         />
