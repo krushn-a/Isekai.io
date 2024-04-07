@@ -11,13 +11,13 @@ function Home({ enterWorld }) {
       <div className='hidden lg:w-6/12 lg:flex'>
         {' '}
         <img
-          src='../public/images/group.png'
+          src='/images/group.png'
           className='h-screen'
         />
       </div>
       <div className='md:top-0 bottom-0 left-0 right-0 mx-auto lg:flex flex-col  w-6/12 items-center justify-center h-screen'>
         <img
-          src='../public/images/logo.svg'
+          src='/images//logo.svg'
           alt='img'
           className='size-72 h-40 absolute md:top-12 lg:top-2 pt-20 '
         />
