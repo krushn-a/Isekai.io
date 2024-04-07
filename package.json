@@ -14,6 +14,7 @@
   "repository": "github:dipandhali/isekai.io",
   "license": "MIT",
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "@react-three/drei": "^9",
     "@react-three/fiber": "^8.13.3",
     "@react-three/rapier": "^1",
