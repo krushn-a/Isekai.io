@@ -8,10 +8,9 @@ Isekai.io is a virtual world inspired by the popular "Isekai" genre, where users
 2) Community Building: Users can form groups, clubs, or guilds based on shared interests.
 
 ## Technology
-1) Socket.io
-2) React Fibre 3
-3) Node js
-4) MongoDB
+1) React Fibre 3
+2) Playroom Kit
+3) Ecctrl
 
 ## Join the Escape!
 
